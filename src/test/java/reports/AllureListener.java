@@ -1,12 +1,13 @@
 package reports;
 
-import commonTest.TestBase;
 import io.qameta.allure.Allure;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+
+import static commonTest.captureScreenshot.captureScreenshot;
 
 public class AllureListener implements ITestListener {
 
@@ -15,11 +16,8 @@ public class AllureListener implements ITestListener {
 
         try {
 
-            TestBase testBase =
-                    (TestBase) result.getInstance();
-
             String screenshotPath =
-                    testBase.captureScreenshot(
+                    captureScreenshot(
                             result.getMethod().getMethodName());
 
             InputStream is =
@@ -32,7 +30,6 @@ public class AllureListener implements ITestListener {
                     ".png");
 
         } catch (Exception e) {
-
             e.printStackTrace();
         }
     }
