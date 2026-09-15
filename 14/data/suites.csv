@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","344","SearchPartialKeyword","ParallelSuite","2026-09-15","passed","2026-09-15","Trello_TestScript.TC01_Product","Regression","Trello_TestScript.TC01_Product","SearchPartialKeyword"
+"","827","verifyDiscountfeature","ParallelSuite","2026-09-15","passed","2026-09-15","Trello_TestScript.TC010_Discount","Regression","Trello_TestScript.TC010_Discount","verifyDiscountfeature"
+"","566","SearchFullKeyword","ParallelSuite","2026-09-15","passed","2026-09-15","Trello_TestScript.TC01_Product","Regression","Trello_TestScript.TC01_Product","SearchFullKeyword"
+"","1173","multipleDiscount","ParallelSuite","2026-09-15","failed","2026-09-15","Trello_TestScript.TC010_Discount","Regression","Trello_TestScript.TC010_Discount","multipleDiscount"
