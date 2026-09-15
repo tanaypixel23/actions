@@ -38,3 +38,5 @@ build/
 Screenshots/
 
 .gitignore
+
+.github/workflows/qodana_code_quality.yml
