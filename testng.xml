@@ -8,6 +8,7 @@
     <test name="Regression">
         <classes>
             <class name="Trello_TestScript.TC01_Product" />
+            <class name="Trello_TestScript.TC010_Discount" />
             <!--<class name="Trello_TestScript.TC02_Cart" />
             <class name="Trello_TestScript.TC03_Wishlist" />
             <class name="Trello_TestScript.TC04_Filters" />
