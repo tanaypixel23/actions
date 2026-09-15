@@ -1,4 +1,4 @@
-<suite name="ParallelSuite" parallel="methods" thread-count="3">
+<suite name="ParallelSuite">
 
     <listeners>
         <listener class-name="io.qameta.allure.testng.AllureTestNg"/>

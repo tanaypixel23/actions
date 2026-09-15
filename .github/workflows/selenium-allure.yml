@@ -33,11 +33,26 @@ jobs:
       - name: Run TestNG Suite
         run: mvn clean test
 
+      - name: Debug Allure Files
+        if: always()
+        run: |
+          echo "Finding allure directories..."
+          find . -type d | grep allure || true
+
+          echo "Finding allure files..."
+          find . -type f | grep allure || true
+
+      - name: Verify Allure Results
+        if: always()
+        run: |
+          echo "Contents of target/allure-results"
+          ls -la target/allure-results
+
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          allure_results: allure-results
+          allure_results: target/allure-results
           allure_history: allure-history
           keep_reports: 20
 
