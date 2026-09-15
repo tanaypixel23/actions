@@ -1,36 +1,50 @@
-name: Selenium TestNG Allure
+name: Website Test and Publish Report
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'website/**'
+      - 'docs/**'
 
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
+
   test:
 
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 21
+          java-version: '21'
+          cache: maven
 
-      - name: Run Tests
+      - name: Run TestNG Suite
         run: mvn clean test
 
-      - name: Upload Allure Results
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
         if: always()
-        uses: actions/upload-artifact@v4
         with:
-          name: allure-results
-          path: allure-results
+          allure_results: allure-results
+          allure_history: allure-history
+          keep_reports: 20
+
+      - name: Publish Report To GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        if: always()
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
