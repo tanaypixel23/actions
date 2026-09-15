@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'docs/**'
 
   workflow_dispatch:
 
@@ -13,7 +11,6 @@ permissions:
   contents: write
 
 jobs:
-
   test:
 
     runs-on: ubuntu-latest
@@ -32,47 +29,42 @@ jobs:
 
       - name: Run TestNG Suite
         run: mvn clean test
-
-      - name: Debug Allure Files
-        if: always()
-        run: |
-          echo "Finding allure directories..."
-          find . -type d | grep allure || true
-
-          echo "Finding allure files..."
-          find . -type f | grep allure || true
+        continue-on-error: true
 
       - name: Verify Allure Results
         if: always()
         run: |
-          echo "Contents of target/allure-results"
-          ls -la target/allure-results
-          
+          echo "Checking Allure Results..."
+          ls -la target/allure-results || true
+
+      # Download existing gh-pages branch
       - name: Get Allure History
-        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
+        uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: gh-pages
 
-      - name: Copy History
-        if: always()
-        run: |
-          mkdir -p target/allure-results/history
-          cp -r gh-pages/last-history/* target/allure-results/history/ || true
-
+      # Generate report with history
       - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@master
         if: always()
+        uses: simple-elf/allure-report-action@master
         with:
           allure_results: target/allure-results
           allure_history: allure-history
+          gh_pages: gh-pages
           keep_reports: 20
 
-      - name: Publish Report To GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      # Remove nested git metadata
+      - name: Remove Nested Git Folder
         if: always()
+        run: |
+          rm -rf allure-history/.git || true
+
+      - name: Publish Report To GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
