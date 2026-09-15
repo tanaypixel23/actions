@@ -42,3 +42,5 @@ Screenshots/
 .github/workflows/qodana_code_quality.yml
 
 test/java/commonTest/beforesuite
+
+qodana.yaml
