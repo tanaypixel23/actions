@@ -52,10 +52,11 @@ public class TC01_Product extends TestBase {
         SearchProduct("Mascara");
     }
 
-    @Test
+    /*@Test
     public void dummy() {
         Assert.fail();
     }
+    */
 }
 
 
