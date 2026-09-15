@@ -40,3 +40,5 @@ Screenshots/
 .gitignore
 
 .github/workflows/qodana_code_quality.yml
+
+test/java/commonTest/beforesuite
