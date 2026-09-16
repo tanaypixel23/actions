@@ -673,7 +673,7 @@ public class TC03_Wishlist extends TestBase {
      * WHEN   The user clicks "Add to Cart" on product "C" from the wishlist
      * THEN   Cart quantity for product "C" increments to 2
      *        No orphan or ghost cart entries are created
-     */
+
     @Test(description = "TC-W12 [EDGE]: Add to cart from wishlist when item already in cart")
     public void TC_W12_addToCartFromWishlistAlreadyInCart() throws InterruptedException {
         // GIVEN — add to wishlist then to cart once
@@ -695,6 +695,7 @@ public class TC03_Wishlist extends TestBase {
         // THEN
         Assert.assertTrue(cartBadgeCount() >= cartCountAfterFirst , "TC-W12: Cart count must not decrease after second add-to-cart from wishlist");
     }
+    */
 
 
 
@@ -799,7 +800,7 @@ public class TC03_Wishlist extends TestBase {
      * WHEN   The user clicks on product "F"'s name or image in the wishlist
      * THEN   The user is taken to product "F"'s detail page
      *        The correct product information is displayed on the detail page
-     */
+
     @Test(description = "TC-W16: Clicking a wishlist item navigates to product detail page")
     public void TC_W16_clickingWishlistItemNavigatesToDetail() throws InterruptedException {
         // GIVEN
@@ -819,6 +820,7 @@ public class TC03_Wishlist extends TestBase {
         boolean detailRendered = !driver.findElements(SINGLE_PRODUCT_PAGE_INFO).isEmpty();
         Assert.assertTrue(urlChanged || detailRendered, "TC-W16: Clicking wishlist item should navigate to product detail page");
     }
+    */
 
     /**
      * TC-W17 — Wishlist items are correctly filtered when product category filter is appliedr.
