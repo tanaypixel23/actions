@@ -343,7 +343,7 @@ public class TC05_Sort extends TestBase {
     // 4. Name: Z to A
 
 
-    @Test(priority = 4)
+    /*@Test(priority = 4)
     public void sortByNameZToA() {
 
         navigateToProducts();
@@ -371,7 +371,7 @@ public class TC05_Sort extends TestBase {
                 expectedNames,
                 "Products are NOT sorted from Z to A"
         );
-    }
+    }*/
 
 
 

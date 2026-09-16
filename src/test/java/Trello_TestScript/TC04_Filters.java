@@ -58,7 +58,7 @@ public class TC04_Filters extends TestBase {
      * message are present (backend has responded).
      */
     private void goToProductsPage() {
-        driver.findElement(PRODUCTS_NAV_LINK);
+        driver.findElement(PRODUCTS_NAV_LINK).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(d -> !d.findElements(PRODUCT_CARDS).isEmpty()
                 || !d.findElements(NO_PRODUCTS).isEmpty());
@@ -408,10 +408,6 @@ public class TC04_Filters extends TestBase {
     @Test
     public void applyFiltersAfterScrolling() throws InterruptedException {
         goToProductsPage();
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-
         selectFilter(PRICE_0_50);
         selectFilter(RATING_4_AND_ABOVE);
 

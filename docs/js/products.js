@@ -152,7 +152,12 @@ function applyFilters() {
     let priceMatch = true;
     if (selectedPrice) {
       const [min, max] = selectedPrice.split('-').map(Number);
-      priceMatch = product.price >= min && product.price <= max;
+      const discountedPrice =
+          product.price * (1 - product.discountPercentage / 100);
+
+      priceMatch =
+          discountedPrice >= min &&
+          discountedPrice <= max;
     }
 
     let ratingMatch = true;
@@ -190,12 +195,19 @@ function handleSort() {
 
   switch (sortValue) {
     case 'price-low-high':
-      filteredProducts.sort((a, b) => { return a.price - b.price });
+      filteredProducts.sort(
+          (a, b) =>
+              (a.price * (1 - a.discountPercentage / 100)) -
+              (b.price * (1 - b.discountPercentage / 100))
+      );
       break;
+
     case 'price-high-low':
-      filteredProducts.sort((a, b) => {
-        return b.price - a.price
-      });
+      filteredProducts.sort(
+          (a, b) =>
+              (b.price * (1 - b.discountPercentage / 100)) -
+              (a.price * (1 - a.discountPercentage / 100))
+      );
       break;
     case 'name-a-z':
       filteredProducts.sort((a, b) => {
