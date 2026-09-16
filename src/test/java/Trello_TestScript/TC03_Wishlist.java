@@ -43,7 +43,6 @@ import java.util.List;
 public class TC03_Wishlist extends TestBase {
 
     // ── Locators ──────────────────────────────────────────────────────────────
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     // Header / nav
     private static final By PRODUCT_PAGE       = By.cssSelector("li a[href=\"products.html\"]");
     private static final By WISHLIST_PAGE      = By.cssSelector("li a[href=\"favorites.html\"]");

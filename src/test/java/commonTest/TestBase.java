@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
@@ -15,9 +16,12 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 
+import java.time.Duration;
+
 public class TestBase {
 
     protected WebDriver driver;
+    protected WebDriverWait wait;
 
     @BeforeMethod
     @Parameters("browser")
@@ -73,6 +77,7 @@ public class TestBase {
         }
 
         driver = DriverFactory.getDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         if (!isGitHubActions) {
             driver.manage().window().maximize();

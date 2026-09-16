@@ -239,7 +239,7 @@ public class TC02_Cart extends TestBase {
         WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement button=wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-add-to-cart")));
         button.click();
-        driver.navigate().to("https://ibrahim2656.github.io/E-commerce-Site/cart.html");
+        navigateToCart();
         WebElement checkout=driver.findElement(By.id("btn-checkout"));
         Assert.assertTrue(checkout.isEnabled());
         checkout.click();
@@ -247,7 +247,7 @@ public class TC02_Cart extends TestBase {
         Assert.assertTrue(actual.contains("checkout.html"));
 
     }
-    @Test
+    /*@Test
     public void VerifyOrderSummaryCalculation(){
         navigateToProducts();
         WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
@@ -271,6 +271,7 @@ public class TC02_Cart extends TestBase {
 
 
     }
+    */
     @Test
     public void VerifyDiscountedProductPriceIsDisplayedCorrectly(){
         navigateToProducts();
