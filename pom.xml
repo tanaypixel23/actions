@@ -64,6 +64,13 @@
             <version>2.29.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>4.47.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
 </project>
